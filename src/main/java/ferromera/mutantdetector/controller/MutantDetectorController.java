@@ -1,8 +1,8 @@
 package ferromera.mutantdetector.controller;
 
 import ferromera.mutantdetector.dto.DNAChainDTO;
-import ferromera.mutantdetector.service.DNAValidator;
-import ferromera.mutantdetector.service.MutantDetectorService;
+import ferromera.mutantdetector.service.IDnaValidator;
+import ferromera.mutantdetector.service.IMutantDetectorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,13 +14,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class MutantDetectorController {
 
-    private MutantDetectorService mutantDetectorService;
-    private DNAValidator dnaValidator;
+    private IMutantDetectorService mutantDetectorService;
+    private IDnaValidator dnaValidator;
 
 
     public MutantDetectorController(
-            @Autowired MutantDetectorService mutantDetectorService,
-            @Autowired DNAValidator dnaValidator) {
+            @Autowired IMutantDetectorService mutantDetectorService,
+            @Autowired IDnaValidator dnaValidator) {
         this.mutantDetectorService = mutantDetectorService;
         this.dnaValidator = dnaValidator;
     }
