@@ -1,0 +1,10 @@
+/home/ferromera/repos/dna/src/main/java/ferromera/mutantdetector/controller/MutantDetectorController.java
+/home/ferromera/repos/dna/src/main/java/ferromera/mutantdetector/dto/DNAChainDTO.java
+/home/ferromera/repos/dna/src/main/java/ferromera/mutantdetector/exception/InvalidDnaException.java
+/home/ferromera/repos/dna/src/main/java/ferromera/mutantdetector/service/IMutantDetectorService.java
+/home/ferromera/repos/dna/src/main/java/ferromera/mutantdetector/service/DNAValidator.java
+/home/ferromera/repos/dna/src/main/java/ferromera/mutantdetector/dto/InvalidDnaResponse.java
+/home/ferromera/repos/dna/src/main/java/ferromera/mutantdetector/service/MutantDetectorService.java
+/home/ferromera/repos/dna/src/main/java/ferromera/mutantdetector/exception/DnaExceptionHandler.java
+/home/ferromera/repos/dna/src/main/java/ferromera/mutantdetector/service/IDnaValidator.java
+/home/ferromera/repos/dna/src/main/java/ferromera/mutantdetector/MutantApplication.java
