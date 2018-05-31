@@ -1,16 +1,15 @@
 package ferromera.mutantdetector.controller;
 
-import java.util.Arrays;
-
-import ferromera.mutantdetector.dto.InvalidDnaResponse;
-import ferromera.mutantdetector.exception.InvalidDnaException;
+import ferromera.mutantdetector.dto.DNAChainDTO;
 import ferromera.mutantdetector.service.DNAValidator;
 import ferromera.mutantdetector.service.MutantDetectorService;
-import ferromera.mutantdetector.dto.DNAChainDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class MutantDetectorController {
@@ -32,8 +31,7 @@ public class MutantDetectorController {
             dnaValidator.validate(dnaDto);
 
         return mutantDetectorService.detect(dnaDto) ?
-             ResponseEntity.ok(ResponseEntity.EMPTY) :
-             new ResponseEntity(HttpStatus.FORBIDDEN);
+                new ResponseEntity(HttpStatus.OK) : new ResponseEntity(HttpStatus.FORBIDDEN);
     }
 
 
