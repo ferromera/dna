@@ -29,11 +29,6 @@ public class MutantDetectorController {
     }
 
     
-    @GetMapping(value = "/stats")
-    public List<Stat> getStats() {
-        return statsDao.getAllStats();
-    }
-    
     @PostMapping("/mutant")
     public ResponseEntity greeting(@RequestBody DNAChainDTO dnaDto, @RequestParam boolean validateMatrixSize) {
         if(validateMatrixSize)

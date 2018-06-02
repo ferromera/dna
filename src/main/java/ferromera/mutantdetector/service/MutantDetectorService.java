@@ -1,6 +1,8 @@
 package ferromera.mutantdetector.service;
 
+import ferromera.mutantdetector.dao.DnaDao;
 import ferromera.mutantdetector.dto.DNAChainDTO;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -8,9 +10,24 @@ public class MutantDetectorService implements IMutantDetectorService {
     
     private static final int MUTANT_AMOUNT = 2;
     
+    private DnaDao dnaDao;
+    
+    public MutantDetectorService(@Autowired DnaDao dnaDao) {
+        this.dnaDao = dnaDao;
+    }
+    
     @Override
     public boolean detect(DNAChainDTO dnaDto) {
+    
         String [] dna = dnaDto.getDna();
+        boolean isMutant = isMutant(dna);
+        dnaDao.saveDna(dna,isMutant);
+        return isMutant;
+    }
+    
+    public boolean isMutant(String[] dna) {
+        if(dna.length < 4)
+            return false;
         int fourMatches = 0;
         fourMatches+= countHorizontally(dna);
         if(fourMatches >= MUTANT_AMOUNT) return true;
@@ -18,9 +35,9 @@ public class MutantDetectorService implements IMutantDetectorService {
         if(fourMatches >= MUTANT_AMOUNT) return true;
         fourMatches+= countDiagonally(dna,fourMatches);
         if(fourMatches >= MUTANT_AMOUNT) return true;
-
+        fourMatches+= countDiagonallyReverse(dna,fourMatches);
+        if(fourMatches >= MUTANT_AMOUNT) return true;
         return false;
-
     }
     
     private int countHorizontally(String [] dna) {
@@ -144,4 +161,65 @@ public class MutantDetectorService implements IMutantDetectorService {
         return fourMatches;
     }
     
+    
+    private int countDiagonallyReverse(String[] dna, int matches) {
+        int fourMatches = 0;
+        // index i and k for columns , index j for rows
+        for(int i=dna.length-1 ; i > 2 ; i--){
+            int sameCount=1;
+            char previous = dna[0].charAt(i);
+            for(int j=1 , k=i-1; j < dna.length && k >= 0 ; j++,k--){
+                char current = dna[j].charAt(k);
+                if(current == previous) {
+                    if(sameCount == 0){
+                        //already matched
+                        previous=current;
+                        continue;
+                    }
+                    sameCount++;
+                    if(sameCount==4){
+                        sameCount=0;
+                        fourMatches++;
+                        if(fourMatches >= MUTANT_AMOUNT - matches)
+                            break;
+                    }
+                }else
+                    sameCount=1;
+                previous=current;
+            }
+            if(fourMatches >= MUTANT_AMOUNT - matches)
+                break;
+        }
+        
+        if(fourMatches >= MUTANT_AMOUNT - matches)
+            return fourMatches;
+    
+        // index i and k for rows , index j for columns
+        for(int i=1 ; i < dna.length-3 ; i++){
+            int sameCount=1;
+            char previous = dna[i].charAt(dna.length-1);
+            for(int j=dna.length-2 , k=i+1; j >= 0 && k < dna.length ; j--,k++){
+                char current = dna[k].charAt(j);
+                if(current == previous) {
+                    if(sameCount == 0){
+                        //already matched
+                        previous=current;
+                        continue;
+                    }
+                    sameCount++;
+                    if(sameCount==4){
+                        sameCount=0;
+                        fourMatches++;
+                        if(fourMatches >= MUTANT_AMOUNT - matches)
+                            break;
+                    }
+                }else
+                    sameCount=1;
+                previous=current;
+            }
+            if(fourMatches >= MUTANT_AMOUNT - matches)
+                break;
+        }
+        return fourMatches;
+    }
 }
