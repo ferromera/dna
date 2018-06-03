@@ -67,6 +67,7 @@ Quedando así definidos los servicios /mutant y /stats con las siguientes URL's:
 
 ## Configuración
 La aplicación puede ser configurada con las siguientes properties.
+
 | Property | Descripcion |
 | ------ | ------ |
 | validate.matrixsize | true o false, indicando si debe validar que la matriz sea cuadrada.(default true) |
