@@ -7,5 +7,6 @@ import ferromera.mutantdetector.dto.DNAChainDTO;
  */
 public interface IDnaValidator {
 
-    void validate(DNAChainDTO dnaDto);
+    void validateSize(String[] dna);
+    void validateBases(String[] dna);
 }

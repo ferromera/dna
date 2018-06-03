@@ -44,7 +44,9 @@ public class DnaDao {
     
     public void persist(String[] dna, boolean isMutant) {
         Boolean compressed = false;
-        String dnaString = Arrays.toString(dna);
+        String dnaString = "";
+        for(String row :dna)
+            dnaString+=row;
         byte[] dnaData;
         if(compressThreshold!= 0 && dna.length >= compressThreshold) {
             try {

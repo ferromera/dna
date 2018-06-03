@@ -1,7 +1,6 @@
 import ferromera.mutantdetector.dto.DNAChainDTO
 import ferromera.mutantdetector.exception.InvalidDnaException
 import ferromera.mutantdetector.service.DNAValidator
-import org.apache.tomcat.util.descriptor.tld.ValidatorXml
 import spock.lang.Specification
 
 class ValidatorSpec extends Specification{
@@ -16,7 +15,7 @@ class ValidatorSpec extends Specification{
                         "1"
                 ]
         )
-        when: validator.validate(chain)
+        when: validator.validateSize(chain)
         then: thrown(InvalidDnaException)
     }
 
@@ -28,7 +27,7 @@ class ValidatorSpec extends Specification{
                         "142"
                 ]
         )
-        when: validator.validate(chain)
+        when: validator.validateSize(chain)
         then: noExceptionThrown()
     }
 
