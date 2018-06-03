@@ -58,9 +58,9 @@ Si no hay humanos procedados el ratio será 0.
 ## Hosting
 
 El server está hosteado en [Heroku] y su URL es:
-###### https://mutantdetector.herokuapp.com
-## 
-##
+ https://mutantdetector.herokuapp.com
+ 
+
 Quedando así definidos los servicios /mutant y /stats con las siguientes URL's:
   - https://mutantdetector.herokuapp.com/mutant  [POST]
   - https://mutantdetector.herokuapp.com/stats   [GET]
