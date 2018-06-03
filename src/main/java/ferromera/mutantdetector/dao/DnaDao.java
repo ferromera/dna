@@ -26,7 +26,7 @@ public class DnaDao {
     
     @Value("${persist.asyncronally:true}")
     private boolean persitAsyncronally;
-    @Value("${Nkafka.topic:dna}")
+    @Value("${kafka.topic}")
     private String kafkaTopic;
     
     public void saveDna(String[] dna,boolean isMutant){
@@ -46,7 +46,7 @@ public class DnaDao {
         Boolean compressed = false;
         String dnaString = Arrays.toString(dna);
         byte[] dnaData;
-        if(dna.length >= compressThreshold) {
+        if(compressThreshold!= 0 && dna.length >= compressThreshold) {
             try {
                 dnaData = Gzip.compress(dnaString);
                 compressed = true;
