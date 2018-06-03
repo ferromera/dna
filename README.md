@@ -77,7 +77,49 @@ La aplicación puede ser configurada con las siguientes properties.
 | kafka.bootstrap-servers | URL del broker de Kafka (default localhost:9092) |
 
 
+  
+
+   ## Ejecución local
+   
+   ### Requisitos
+     - Git
+     - Java 8
+     - Maven 3
+     - PostgreSQL
+     - Zookeeper (Opcional)
+     - Kafka (Opcional)
+     
+### Base de Datos
+Debera crearse una base de datos [PostgreSQL] corriendo en el puerto 5432 con el nombre dna y con permisos para el usuario user12/password, que contenga la 
+siguiente tabla:
+```sql
+CREATE TABLE dna
+(
+  id         SERIAL NOT NULL,
+  compressed BOOLEAN,
+  dnadata    BYTEA,
+  ismutant   BOOLEAN
+);
+```
+Y las siguientes secuencias:
+
+```sql
+CREATE SEQUENCE mutants START 1;
+CREATE SEQUENCE notMutants START 1;
+```
+
+### Pasos
+Para correr la aplicación localmente en localhost:5000, ejecutar en un terminal de linux los siguientes comandos:
+```sh
+# git clone git@github.com:ferromera/dna.git
+# cd ./dna
+# mvn clean install
+# java -jar target/dna-0.1.0.jar
+```
+* Para persistir asincronicamente debera instalarse [Zookeeper] y [Kafka].
+
 
    [Heroku]: <https://www.heroku.com/>
    [Kafka]: <https://kafka.apache.org/>
-   
+   [Zookeeper]: <https://zookeeper.apache.org/>
+   [PostgreSQL]: <https://www.postgresql.org>
