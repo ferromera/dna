@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 
+import static java.math.BigDecimal.ROUND_HALF_UP;
+
 @Service
 public class StatService {
     
@@ -22,7 +24,7 @@ public class StatService {
         Long notMutants = statsDao.getNotMutantCount();
         BigDecimal ratio;
         if((mutants + notMutants) != 0L)
-            ratio = new BigDecimal(mutants).divide(new BigDecimal(notMutants+mutants)).setScale(2,BigDecimal.ROUND_HALF_UP);
+            ratio = new BigDecimal(mutants).divide(new BigDecimal(notMutants+mutants),2,ROUND_HALF_UP);
         else
             ratio=BigDecimal.ZERO;
         

@@ -6,6 +6,7 @@ import ferromera.mutantdetector.model.Stat;
 import ferromera.mutantdetector.service.IDnaValidator;
 import ferromera.mutantdetector.service.IMutantDetectorService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -20,7 +21,9 @@ public class MutantDetectorController {
 
     @Autowired
     private StatsDao statsDao;
-
+    @Value("${validate.matrixsize:true}")
+    private boolean validateMatrixSize;
+    
     public MutantDetectorController(
             @Autowired IMutantDetectorService mutantDetectorService,
             @Autowired IDnaValidator dnaValidator) {
@@ -30,7 +33,7 @@ public class MutantDetectorController {
 
     
     @PostMapping("/mutant")
-    public ResponseEntity greeting(@RequestBody DNAChainDTO dnaDto, @RequestParam boolean validateMatrixSize) {
+    public ResponseEntity greeting(@RequestBody DNAChainDTO dnaDto) {
         if(validateMatrixSize)
             dnaValidator.validate(dnaDto);
 

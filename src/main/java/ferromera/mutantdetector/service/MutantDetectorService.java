@@ -26,7 +26,7 @@ public class MutantDetectorService implements IMutantDetectorService {
     }
     
     public boolean isMutant(String[] dna) {
-        if(dna.length < 4)
+        if(dna.length < 4) //If its lesser than 4 is not consider a mutant
             return false;
         int fourMatches = 0;
         fourMatches+= countHorizontally(dna);
