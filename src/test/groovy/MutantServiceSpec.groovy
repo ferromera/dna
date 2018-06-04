@@ -1,11 +1,11 @@
 import ferromera.mutantdetector.dao.DnaDao
 import ferromera.mutantdetector.dto.DNAChainDTO
-import ferromera.mutantdetector.service.MutantDetectorService
+import ferromera.mutantdetector.service.impl.MutantDetectorServiceImpl
 import spock.lang.Specification
 
 class MutantServiceSpec extends Specification {
 
-    MutantDetectorService service = new MutantDetectorService()
+    MutantDetectorServiceImpl service = new MutantDetectorServiceImpl()
     DnaDao dnaDao = Mock(DnaDao)
 
     def setup(){

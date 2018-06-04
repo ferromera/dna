@@ -1,12 +1,11 @@
-import ferromera.mutantdetector.dto.DNAChainDTO
 import ferromera.mutantdetector.exception.InvalidDnaException
-import ferromera.mutantdetector.service.DNAValidator
+import ferromera.mutantdetector.service.impl.DNAValidatorImpl
 import spock.lang.Specification
 
 class ValidatorSpec extends Specification{
 
 
-    DNAValidator validator = new DNAValidator();
+    DNAValidatorImpl validator = new DNAValidatorImpl();
 
     def "fails when not square"(){
         given: String[]  dna= [

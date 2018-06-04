@@ -1,8 +1,8 @@
 package ferromera.mutantdetector.controller;
 
 import ferromera.mutantdetector.dto.DNAChainDTO;
-import ferromera.mutantdetector.service.IDnaValidator;
-import ferromera.mutantdetector.service.IMutantDetectorService;
+import ferromera.mutantdetector.service.DnaValidator;
+import ferromera.mutantdetector.service.MutantDetectorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 public class MutantDetectorController {
 
-    private IMutantDetectorService mutantDetectorService;
-    private IDnaValidator dnaValidator;
+    private MutantDetectorService mutantDetectorService;
+    private DnaValidator dnaValidator;
     
     @Value("${validate.matrixsize:true}")
     private boolean validateMatrixSize;
@@ -21,8 +21,8 @@ public class MutantDetectorController {
     private boolean validateBases;
     
     public MutantDetectorController(
-            @Autowired IMutantDetectorService mutantDetectorService,
-            @Autowired IDnaValidator dnaValidator) {
+            @Autowired MutantDetectorService mutantDetectorService,
+            @Autowired DnaValidator dnaValidator) {
         this.mutantDetectorService = mutantDetectorService;
         this.dnaValidator = dnaValidator;
     }

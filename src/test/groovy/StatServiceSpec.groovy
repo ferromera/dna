@@ -1,6 +1,6 @@
 import ferromera.mutantdetector.dao.StatsDao
 import ferromera.mutantdetector.dto.StatsDTO
-import ferromera.mutantdetector.service.StatService
+import ferromera.mutantdetector.service.impl.StatServiceImpl
 import spock.lang.Specification
 
 
@@ -9,7 +9,7 @@ import spock.lang.Specification
 
 class StatServiceSpec  extends Specification {
 
-    StatService statService = new StatService()
+    StatServiceImpl statService = new StatServiceImpl()
     StatsDao statsDao = Mock(StatsDao)
 
 

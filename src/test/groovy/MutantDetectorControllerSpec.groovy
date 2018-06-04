@@ -1,6 +1,6 @@
 import ferromera.mutantdetector.controller.MutantDetectorController
 import ferromera.mutantdetector.dto.DNAChainDTO
-import ferromera.mutantdetector.service.DNAValidator
+import ferromera.mutantdetector.service.DnaValidator
 import ferromera.mutantdetector.service.MutantDetectorService
 import spock.lang.Specification
 
@@ -8,7 +8,7 @@ class MutantDetectorControllerSpec extends Specification{
 
     MutantDetectorController controller
     MutantDetectorService service = Mock(MutantDetectorService)
-    DNAValidator dnaValidator = Mock(DNAValidator)
+    DnaValidator dnaValidator = Mock(DnaValidator)
 
     def setup(){
         controller= new MutantDetectorController(service,dnaValidator)
