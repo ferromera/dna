@@ -1,3 +1,4 @@
+import ferromera.mutantdetector.dao.DnaDao
 import ferromera.mutantdetector.dto.DNAChainDTO
 import ferromera.mutantdetector.service.MutantDetectorService
 import spock.lang.Specification
@@ -5,6 +6,11 @@ import spock.lang.Specification
 class MutantServiceSpec extends Specification {
 
     MutantDetectorService service = new MutantDetectorService()
+    DnaDao dnaDao = Mock(DnaDao)
+
+    def setup(){
+        service.dnaDao = dnaDao
+    }
 
     def "fails when N < 4"() {
         given:
@@ -271,5 +277,25 @@ class MutantServiceSpec extends Specification {
         then:
         result == true
 
+    }
+
+    def "when call to detect must return result of isMutant and save"(){
+        given:
+        String [] dna = ["AATT",
+                         "CCGG",
+                         "AATT",
+                         "CCGG"]
+
+        DNAChainDTO dto = new DNAChainDTO(dna:dna)
+        when: boolean result = service.detect(dto)
+        then:
+            1*dnaDao.saveDna(_,_) >> { args ->
+                assert args[1] == false
+                String[] dnaArg =  args[0]
+                assert dnaArg[0].equals(dna[0])
+                assert dnaArg[1].equals(dna[1])
+                assert dnaArg[2].equals(dna[2])
+                assert dnaArg[3].equals(dna[3])
+            }
     }
 }

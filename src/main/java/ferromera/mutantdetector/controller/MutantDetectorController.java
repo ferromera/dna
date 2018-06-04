@@ -29,7 +29,7 @@ public class MutantDetectorController {
 
     
     @PostMapping("/mutant")
-    public ResponseEntity greeting(@RequestBody DNAChainDTO dnaDto) {
+    public ResponseEntity detectMutant(@RequestBody DNAChainDTO dnaDto) {
         if(validateMatrixSize)
             dnaValidator.validateSize(dnaDto.getDna());
         if(validateBases)

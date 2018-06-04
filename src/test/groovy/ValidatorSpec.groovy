@@ -28,5 +28,28 @@ class ValidatorSpec extends Specification{
         then: noExceptionThrown()
     }
 
-
+    def "when all bases are in {A,C,G,T) doesnt throw exception"(){
+        given:
+        String[] dna = [
+                "AAC",
+                "CGG",
+                "GTT"
+        ]
+        when:
+        validator.validateBases(dna)
+        then:
+        noExceptionThrown()
+    }
+    def "when some bases are not in {A,C,G,T)  throw exception"(){
+        given:
+        String[] dna = [
+                "AAC",
+                "123",
+                "GTT"
+        ]
+        when:
+        validator.validateBases(dna)
+        then:
+        thrown(InvalidDnaException)
+    }
 }
