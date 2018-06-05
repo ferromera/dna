@@ -14,7 +14,7 @@ Como se menciona en el enunciado:
 ## Asunciones
 
   - Se considera no mutante cualquier ADN de dimensión menor a 4 x 4.
-  - Una suceción de N bases iguales mayor a 4 será considerada S secuencias donde S = floor(N/4). 
+  - Una suceción de N bases iguales mayor a 4 será considerada como S secuencias donde S = floor(N/4). 
   - Se asume que los ADN persistidos no podrán ser eliminados ni alterados.
   - Se considera una secuencia oblicua tanto la que tiene direccion arriba- izquierda hacia abajo-derecha, como la opuesta, arriba-derecha hacia abajo-izquierda.
 
@@ -111,10 +111,10 @@ CREATE SEQUENCE notMutants START 1;
 ### Pasos
 Para correr la aplicación localmente en localhost:5000, ejecutar en un terminal de linux los siguientes comandos:
 ```sh
-# git clone git@github.com:ferromera/dna.git
-# cd ./dna
-# mvn clean install
-# java -jar target/dna-0.1.0.jar
+$ git clone git@github.com:ferromera/dna.git
+$ cd ./dna
+$ mvn clean install
+$ java -jar target/dna-0.1.0.jar
 ```
 * Para persistir asincronicamente debera instalarse [Zookeeper] y [Kafka].
 
