@@ -1,8 +1,6 @@
 package ferromera.mutantdetector.configuration;
 
-import ferromera.mutantdetector.async.DummyProducer;
 import ferromera.mutantdetector.async.KafkaProducer;
-import ferromera.mutantdetector.dao.DnaDao;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
@@ -65,12 +63,6 @@ public class KafkaConfig {
         return new KafkaProducer();
     }
     
-    @Bean
-    @ConditionalOnProperty(value = "persist.asyncronally",havingValue = "false")
-    public DummyProducer dummyProducer() {
-        return new DummyProducer();
-    }
-    
     
     @Bean
     @ConditionalOnProperty(value = "persist.asyncronally",havingValue = "true")
@@ -81,9 +73,7 @@ public class KafkaConfig {
         props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, JsonDeserializer.class);
         props.put(ConsumerConfig.GROUP_ID_CONFIG, "json");
         props.put(ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG, false);
-//        props.put(JsonDeserializer.TRUSTED_PACKAGES, "com.ferromera.mutantdetector.model");
-    
-    
+
         return props;
     }
     

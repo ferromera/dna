@@ -3,10 +3,6 @@ import ferromera.mutantdetector.dto.StatsDTO
 import ferromera.mutantdetector.service.impl.StatServiceImpl
 import spock.lang.Specification
 
-
-
-
-
 class StatServiceSpec  extends Specification {
 
     StatServiceImpl statService = new StatServiceImpl()

@@ -1,4 +1,4 @@
-package ferromera.mutantdetector.dao;
+package ferromera.mutantdetector.dao.mapper;
 
 import ferromera.mutantdetector.model.Count;
 import ferromera.mutantdetector.model.Stat;
