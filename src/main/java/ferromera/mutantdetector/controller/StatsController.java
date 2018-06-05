@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class StatsController {
 
 
-    private StatService statService;
+    private StatServiceImpl statService;
     
     public StatsController(@Autowired StatServiceImpl statService) {
         this.statService = statService;
