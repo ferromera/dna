@@ -19,7 +19,7 @@ class MutantDetectorControllerSpec extends Specification{
         given:
         controller.validateMatrixSize=false
         controller.validateBases = false
-        DNAChainDTO dto = new DNAChainDTO()
+        DNAChainDTO dto = new DNAChainDTO(dna:["AA","CC"])
         when:
         controller.detectMutant(dto)
         then:

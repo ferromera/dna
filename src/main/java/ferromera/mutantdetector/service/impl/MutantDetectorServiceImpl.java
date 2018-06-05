@@ -1,13 +1,21 @@
 package ferromera.mutantdetector.service.impl;
 
+import ferromera.mutantdetector.controller.MutantDetectorController;
 import ferromera.mutantdetector.dao.DnaDao;
 import ferromera.mutantdetector.dto.DNAChainDTO;
 import ferromera.mutantdetector.service.MutantDetectorService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
+
 @Service
 public class MutantDetectorServiceImpl implements MutantDetectorService {
+    
+    private static final Logger LOGGER = LoggerFactory.getLogger(MutantDetectorServiceImpl.class);
+    
     
     private static final int MUTANT_AMOUNT = 2;
     
@@ -21,7 +29,9 @@ public class MutantDetectorServiceImpl implements MutantDetectorService {
     public boolean detect(DNAChainDTO dnaDto) {
     
         String [] dna = dnaDto.getDna();
+        LOGGER.info("Detecting mutant on dna: {}", Arrays.toString(dna) );
         boolean isMutant = isMutant(dna);
+        LOGGER.info("Detection results {} on dna: {}",isMutant, Arrays.toString(dna) );
         dnaDao.saveDna(dna,isMutant);
         return isMutant;
     }
