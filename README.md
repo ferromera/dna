@@ -110,7 +110,7 @@ CREATE SEQUENCE notMutants START 1;
 
 ### Pasos
 Para correr la aplicación localmente en localhost:5000, ejecutar en un terminal de linux los siguientes comandos:
-```sh
+```
 $ git clone git@github.com:ferromera/dna.git
 $ cd ./dna
 $ mvn clean install
