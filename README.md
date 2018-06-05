@@ -14,7 +14,7 @@ Como se menciona en el enunciado:
 ## Asunciones
 
   - Se considera no mutante cualquier ADN de dimensión menor a 4 x 4.
-  - Una suceción de bases iguales mayor a 4 será considerada como una sola secuencia. 
+  - Una suceción de N bases iguales mayor a 4 será considerada S secuencias donde S = floor(N/4). 
   - Se asume que los ADN persistidos no podrán ser eliminados ni alterados.
   - Se considera una secuencia oblicua tanto la que tiene direccion arriba- izquierda hacia abajo-derecha, como la opuesta, arriba-derecha hacia abajo-izquierda.
 

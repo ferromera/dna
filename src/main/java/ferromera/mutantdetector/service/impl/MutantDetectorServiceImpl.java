@@ -49,11 +49,6 @@ public class MutantDetectorServiceImpl implements MutantDetectorService {
             for(int j=1; j < dna.length ; j++){
                 char current = dna[i].charAt(j);
                 if(current == previous) {
-                    if(sameCount == 0){
-                        //already matched
-                        previous=current;
-                        continue;
-                    }
                     sameCount++;
                     if(sameCount==4){
                         sameCount=0;
@@ -80,11 +75,6 @@ public class MutantDetectorServiceImpl implements MutantDetectorService {
             for(int j=1; j < dna.length ; j++){
                 char current = dna[j].charAt(i);
                 if(current == previous) {
-                    if(sameCount == 0){
-                        //already matched
-                        previous=current;
-                        continue;
-                    }
                     sameCount++;
                     if(sameCount==4){
                         sameCount=0;
@@ -111,11 +101,6 @@ public class MutantDetectorServiceImpl implements MutantDetectorService {
             for(int j=1 , k=i+1; j < dna.length && k < dna.length ; j++,k++){
                 char current = dna[j].charAt(k);
                 if(current == previous) {
-                    if(sameCount == 0){
-                        //already matched
-                        previous=current;
-                        continue;
-                    }
                     sameCount++;
                     if(sameCount==4){
                         sameCount=0;
@@ -140,11 +125,6 @@ public class MutantDetectorServiceImpl implements MutantDetectorService {
             for(int j=1 , k=i+1; j < dna.length && k < dna.length ; j++,k++){
                 char current = dna[k].charAt(j);
                 if(current == previous) {
-                    if(sameCount == 0){
-                        //already matched
-                        previous=current;
-                        continue;
-                    }
                     sameCount++;
                     if(sameCount==4){
                         sameCount=0;
@@ -172,11 +152,6 @@ public class MutantDetectorServiceImpl implements MutantDetectorService {
             for(int j=1 , k=i-1; j < dna.length && k >= 0 ; j++,k--){
                 char current = dna[j].charAt(k);
                 if(current == previous) {
-                    if(sameCount == 0){
-                        //already matched
-                        previous=current;
-                        continue;
-                    }
                     sameCount++;
                     if(sameCount==4){
                         sameCount=0;
@@ -202,11 +177,6 @@ public class MutantDetectorServiceImpl implements MutantDetectorService {
             for(int j=dna.length-2 , k=i+1; j >= 0 && k < dna.length ; j--,k++){
                 char current = dna[k].charAt(j);
                 if(current == previous) {
-                    if(sameCount == 0){
-                        //already matched
-                        previous=current;
-                        continue;
-                    }
                     sameCount++;
                     if(sameCount==4){
                         sameCount=0;

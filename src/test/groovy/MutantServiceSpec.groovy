@@ -42,6 +42,27 @@ class MutantServiceSpec extends Specification {
             result == false
 
     }
+    def "fails when one hor segment of 7"() {
+        given:
+        String [] dna =  [
+                "AAAAAAAT",
+                "CCGGCCGG",
+                "AATTAATT",
+                "CCGGCCGG",
+                "AATTAATT",
+                "CCGGCCGG",
+                "AATTAATT",
+                "CCGGCCGG"
+        ]
+        when:
+        boolean result = service.isMutant(dna)
+        then:
+        result == false
+
+    }
+
+
+
     def "fails when one hor segment"() {
         given:
         String [] dna =  [
@@ -111,6 +132,26 @@ class MutantServiceSpec extends Specification {
     }
 
     //SUCCESSFUL
+
+    def "succeeds when one hor segment of 8"() {
+        given:
+        String [] dna =  [
+                "AAAAAAAA",
+                "CCGGCCGG",
+                "AATTAATT",
+                "CCGGCCGG",
+                "AATTAATT",
+                "CCGGCCGG",
+                "AATTAATT",
+                "CCGGCCGG"
+        ]
+        when:
+        boolean result = service.isMutant(dna)
+        then:
+        result == true
+
+    }
+
     def "succeeds when 2 hor segments"() {
         given:
         String [] dna =  [
